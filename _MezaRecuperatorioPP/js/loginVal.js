@@ -31,7 +31,7 @@ $(document).ready(function(){
         }            
     }).on('success.form.bv',function(e){
         e.preventDefault();
-        alert("todo bien");
+        //alert("todo bien");
         var email = $("#inputEmail").val();
         var password = $("#inputPassword").val();
         localStorage.author = email;
@@ -50,17 +50,21 @@ $(document).ready(function(){
             dataType:"JSON",
         })
         .done(function(data){
-            //alert(JSON.stringify(data));
+            alert(JSON.stringify(data));
             var autenticado = data.autenticado;
             var color = data.preferencias.color;
             var font = data.preferencias.font; 
+            var role = data.role;
             //alert(autenticado+" "+color+" "+font);
             localStorage.autenticado = autenticado;
             localStorage.color = color;
             localStorage.font = font;
             //alert(JSON.stringify(localStorage));
-            window.location.replace("admin.html");
-                $("#respuesta").html("prueba");
+            if(autenticado=='si' && role=='admin'){
+                alert('si');
+                window.location.replace("admin.html");
+                //$("#respuesta").html("prueba");
+            }
         })
         .fail(function(peticion, textStatus, errorThrown){
             alert("Error " + peticion.status + ' ' + errorThrown);
