@@ -35,7 +35,7 @@ $(document).ready(function(){
         var email = $("#inputEmail").val();
         var password = $("#inputPassword").val();
         localStorage.author = email;
-        alert(email+" "+password);
+        //alert(email+" "+password);
         var datosLogin = {
             email: email,
             password: password
@@ -50,18 +50,18 @@ $(document).ready(function(){
             dataType:"JSON",
         })
         .done(function(data){
-            alert(JSON.stringify(data));
+            //alert(JSON.stringify(data));
             var autenticado = data.autenticado;
             var color = data.preferencias.color;
             var font = data.preferencias.font; 
             var role = data.role;
             //alert(autenticado+" "+color+" "+font);
             localStorage.autenticado = autenticado;
-            localStorage.color = color;
-            localStorage.font = font;
+            //localStorage.color = color;
+            //localStorage.font = font;
             //alert(JSON.stringify(localStorage));
             if(autenticado=='si' && role=='admin'){
-                alert('si');
+                //alert('si');
                 window.location.replace("admin.html");
                 //$("#respuesta").html("prueba");
             }
